@@ -5,7 +5,7 @@ class LinkToken
   toHTML: ->
     if @manialink and not /^maniaplanet:/i.test(@link)
       @link = "maniaplanet://#manialink=" + @link
-    if not @manialink and not /^http:/i.test(@link)
+    if not @manialink and not /^https?:/i.test(@link)
       @link = "http://" + @link
     return '<a href="' + @link + '">'
 	

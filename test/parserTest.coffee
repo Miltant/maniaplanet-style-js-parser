@@ -20,6 +20,8 @@ describe 'Parser', ->
     expect(Parser.toHTML('$l[www.clan-nuitblanche.org]$fff$l')).to.equal('')
   it 'should add http protocol to external links', ->
     expect(Parser.toHTML('$l[maniaplanet.com]maniaplanet$l')).to.equal('<a href="http://maniaplanet.com">maniaplanet</a>')
+  it 'shouldn\'t add http to links already starting with https', ->
+    expect(Parser.toHTML('$l[https://maniaplanet.com]a')).to.equal('<a href="https://maniaplanet.com">a</a>')
   it 'should add maniaplanet protocol to internal links', ->
     expect(Parser.toHTML('$h[maniaflash]ManiaFlash$h')).to.equal('<a href="maniaplanet://#manialink=maniaflash">ManiaFlash</a>')
   it 'should handle color codes', ->
